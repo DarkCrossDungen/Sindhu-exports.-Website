@@ -18,10 +18,15 @@ export default function AdminGuard({ children }) {
     setChecking(false);
   }, []);
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Default password for now - You can change this in your .env later
-    if (password === "SINDHU2024") {
+    setChecking(true);
+    
+    // We'll call a server action to check the password securely
+    const { verifyAdminPassword } = await import("../actions");
+    const isCorrect = await verifyAdminPassword(password.trim());
+    
+    if (isCorrect) {
       localStorage.setItem("sindhu_admin_session", "authorized");
       setIsAuthenticated(true);
       setError(false);
@@ -29,6 +34,7 @@ export default function AdminGuard({ children }) {
       setError(true);
       setPassword("");
     }
+    setChecking(false);
   };
 
   if (checking) return null;

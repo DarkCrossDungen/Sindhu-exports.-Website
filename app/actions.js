@@ -22,3 +22,12 @@ export async function submitWholesaleForm(formData) {
 
   return result;
 }
+
+/**
+ * Verifies the admin password server-side
+ */
+export async function verifyAdminPassword(password) {
+  // We use the environment variable if set, otherwise a fallback
+  const MASTER_PASSWORD = process.env.ADMIN_PASSWORD || "SINDHU2024";
+  return password === MASTER_PASSWORD;
+}

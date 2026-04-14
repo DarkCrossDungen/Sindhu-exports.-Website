@@ -1,38 +1,78 @@
-export default function AdminLayout({ children }) {
-  // We don't render Navbar or Footer here because it's a separate admin experience
-  return (
-    <div className="min-h-screen bg-background text-on-surface flex">
-      {/* Sidebar from specs block 4 */}
-      <aside className="fixed left-0 top-0 bottom-0 w-64 bg-surface-container-lowest border-r border-outline/30 z-40 hidden md:flex flex-col">
-        <div className="p-6 border-b border-outline/20">
-          <div className="flex items-center gap-2 text-primary font-headline font-black uppercase text-xl uppercase tracking-tighter">
-            <span className="material-symbols-outlined">factory</span>
-            <span>Sindhu Exports</span>
-          </div>
-          <div className="text-[10px] text-on-surface-variant tracking-widest uppercase mt-1 px-1">Management</div>
-        </div>
-        <nav className="flex-1 p-4 flex flex-col gap-2">
-          {["Dashboard", "Inventory", "Orders", "Analytics", "Settings"].map((item, idx) => (
-            <a key={item} href="#" className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors ${idx === 0 ? "bg-primary/10 text-primary border border-primary/20" : "text-on-surface-variant hover:text-primary hover:bg-surface-container"}`}>
-              <span className="material-symbols-outlined">
-                {item === 'Dashboard' ? 'dashboard' : item === 'Inventory' ? 'inventory_2' : item === 'Orders' ? 'local_shipping' : item === 'Analytics' ? 'bar_chart' : 'settings'}
-              </span>
-              {item}
-            </a>
-          ))}
-        </nav>
-        <div className="p-4 border-t border-outline/20">
-          <div className="bg-surface-container rounded-lg p-4 px-4 flex flex-col gap-1 border border-outline/10">
-            <div className="text-xs font-bold text-white uppercase tracking-wider">Owner Access</div>
-            <div className="text-[10px] font-mono text-primary">Admin ID: #001</div>
-          </div>
-        </div>
-      </aside>
+"use client";
 
-      {/* Main Admin Content Area */}
-      <main className="flex-1 md:ml-64 relative min-h-screen">
-        {children}
-      </main>
-    </div>
-  );
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
+export default function AdminGuard({ children }) {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
+  const [checking, setChecking] = useState(true);
+
+  // Check if already logged in
+  useEffect(() => {
+    const session = localStorage.getItem("sindhu_admin_session");
+    if (session === "authorized") {
+      setIsAuthenticated(true);
+    }
+    setChecking(false);
+  }, []);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    // Default password for now - You can change this in your .env later
+    if (password === "SINDHU2024") {
+      localStorage.setItem("sindhu_admin_session", "authorized");
+      setIsAuthenticated(true);
+      setError(false);
+    } else {
+      setError(true);
+      setPassword("");
+    }
+  };
+
+  if (checking) return null;
+
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center p-6">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }} 
+          animate={{ opacity: 1, scale: 1 }}
+          className="w-full max-w-md bg-surface p-12 rounded-[3rem] border border-white/5 shadow-2xl relative overflow-hidden"
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent pointer-events-none" />
+          
+          <div className="relative z-10 text-center mb-12">
+            <span className="material-symbols-outlined text-5xl text-primary mb-6">lock</span>
+            <h2 className="text-3xl font-headline font-black uppercase text-white tracking-widest">Authorize Entry</h2>
+            <p className="text-[10px] font-black uppercase tracking-[0.4em] text-white/30 mt-2">Sindhu Exports Management</p>
+          </div>
+
+          <form onSubmit={handleLogin} className="relative z-10 space-y-8">
+            <div className="group">
+              <input 
+                type="password" 
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="ENTER ACCESS KEY" 
+                className={`w-full bg-transparent border-b ${error ? 'border-red-500' : 'border-white/10'} py-4 text-center text-white font-black uppercase tracking-[0.5em] text-xs focus:border-primary transition-colors outline-none`} 
+              />
+              {error && <p className="text-red-500 text-[8px] font-black uppercase tracking-widest mt-4">Invalid Access Key. Identity Rejected.</p>}
+            </div>
+            
+            <button className="w-full bg-white text-background font-black uppercase tracking-[1em] py-6 rounded-2xl hover:bg-primary transition-all shadow-xl">
+              Unlock Portal
+            </button>
+          </form>
+
+          <p className="text-[8px] font-mono text-center mt-12 text-white/10 uppercase tracking-[0.3em]">
+            Warning: Unauthorized access is monitored & logged.
+          </p>
+        </motion.div>
+      </div>
+    );
+  }
+
+  return <>{children}</>;
 }

@@ -20,8 +20,14 @@ export default function AdminDashboard() {
     fetchData();
   }, []);
 
+  const handleLogout = () => {
+    localStorage.removeItem("sindhu_admin_session");
+    window.location.reload();
+  };
+
   return (
     <div className="min-h-screen bg-background text-white p-6 md:p-12 pt-32">
+
       <div className="container mx-auto">
         
         {/* HEADER */}
@@ -32,7 +38,10 @@ export default function AdminDashboard() {
               Wholesale <span className="text-primary italic">Inquiries</span>
             </h1>
           </div>
-          <div className="flex gap-6">
+          <div className="flex flex-col sm:flex-row gap-6">
+            <button onClick={handleLogout} className="text-[10px] font-black uppercase tracking-widest text-red-500/50 hover:text-red-500 border border-red-500/20 px-6 py-4 rounded-2xl transition-all">
+              Terminate Session
+            </button>
             <div className="bg-surface border border-white/5 p-6 rounded-3xl min-w-[150px]">
               <span className="text-white/30 text-[10px] font-black uppercase tracking-widest block mb-2">Total Leads</span>
               <span className="text-3xl font-black text-primary">{inquiries.length}</span>

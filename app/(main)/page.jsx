@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useState, useEffect } from "react";
-import ScrollVideo from "../../components/ScrollVideo";
+
 import { submitWholesaleForm } from "../actions";
 
 const fadeIn = {
@@ -43,10 +43,7 @@ function AnimatedNumber({ value }) {
 }
 
 export default function LandingPage() {
-  const { scrollYProgress } = useScroll();
-  const videoScroll = useTransform(scrollYProgress, [0, 0.4], [0, 1]);
-  const heroOpacity = useTransform(scrollYProgress, [0.4, 0.45], [1, 0]);
-  const heroScale = useTransform(scrollYProgress, [0.4, 0.45], [1, 0.9]);
+
 
   const [formStatus, setFormStatus] = useState(null); // 'loading', 'success', 'error'
   const [errorMessage, setErrorMessage] = useState("");
@@ -71,45 +68,45 @@ export default function LandingPage() {
     <div className="bg-background min-h-screen text-white">
 
       {/* ─── SECTION 1: HERO ─── */}
-      <div className="relative h-[600vh] -mt-24">
-        <motion.section 
-          style={{ opacity: heroOpacity, scale: heroScale }}
-          className="sticky top-0 h-screen w-full flex items-center overflow-hidden bg-black z-10"
-        >
-          <div className="absolute top-0 left-0 w-[1000px] h-[1000px] bg-primary/5 rounded-full blur-[150px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
-          <div className="absolute bottom-0 right-0 w-[1000px] h-[1000px] bg-secondary-blue/10 rounded-full blur-[150px] translate-x-1/2 translate-y-1/4 pointer-events-none" />
+      <section className="relative h-screen w-full flex items-center overflow-hidden bg-black z-10 -mt-24">
+        <div className="absolute top-0 left-0 w-[1000px] h-[1000px] bg-primary/5 rounded-full blur-[150px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-[1000px] h-[1000px] bg-secondary-blue/10 rounded-full blur-[150px] translate-x-1/2 translate-y-1/4 pointer-events-none" />
 
-          <div className="container mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 relative z-20 w-full pt-48">
-            <motion.div variants={fadeIn} initial="hidden" animate="visible" className="flex flex-col justify-center">
-              <motion.h1 variants={itemAnim} className="text-5xl md:text-6xl lg:text-[7rem] font-headline font-black leading-[0.8] uppercase tracking-tighter mb-8 bg-clip-text text-transparent bg-gradient-to-br from-white via-white/80 to-secondary-blue">
-                Crafted In <span className="text-secondary-blue">INDIA</span>.<br />
-                Worn By The <span className="text-primary">WORLD</span>.
-              </motion.h1>
-              <div className="flex flex-col sm:flex-row gap-6">
-                <Link href="/shop" className="bg-gradient-to-r from-primary to-secondary-blue text-white font-black uppercase tracking-widest px-12 py-5 rounded-2xl hover:scale-105 transition-all text-sm md:text-base text-center shadow-xl">
-                  Shop Catalog
-                </Link>
-                <a href="#wholesale" className="bg-white/5 border border-white/10 text-white font-black uppercase tracking-widest px-12 py-5 rounded-2xl hover:bg-white/10 transition-all text-sm md:text-base text-center">
-                  Bulk Orders
-                </a>
-              </div>
-            </motion.div>
-            <div className="hidden lg:flex items-center justify-center relative">
-              <div className="w-full h-[600px] rounded-3xl overflow-hidden bg-black relative shadow-2xl">
-                <ScrollVideo progress={videoScroll} />
-              </div>
+        <div className="container mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 relative z-20 w-full pt-24">
+          <motion.div variants={fadeIn} initial="hidden" animate="visible" className="flex flex-col justify-center">
+            <motion.h1 variants={itemAnim} className="text-5xl md:text-6xl lg:text-[7rem] font-headline font-black leading-[0.8] uppercase tracking-tighter mb-8 bg-clip-text text-transparent bg-gradient-to-br from-white via-white/80 to-secondary-blue">
+              Crafted In <span className="text-secondary-blue">INDIA</span>.<br />
+              Worn By The <span className="text-primary">WORLD</span>.
+            </motion.h1>
+            <div className="flex flex-col sm:flex-row gap-6">
+              <Link href="/shop" className="bg-gradient-to-r from-primary to-secondary-blue text-white font-black uppercase tracking-widest px-12 py-5 rounded-2xl hover:scale-105 transition-all text-sm md:text-base text-center shadow-xl">
+                Shop Catalog
+              </Link>
+              <a href="#wholesale" className="bg-white/5 border border-white/10 text-white font-black uppercase tracking-widest px-12 py-5 rounded-2xl hover:bg-white/10 transition-all text-sm md:text-base text-center">
+                Bulk Orders
+              </a>
+            </div>
+          </motion.div>
+          <div className="hidden lg:flex items-center justify-center relative">
+            <div className="w-[80%] h-[600px] relative">
+              <img 
+                src="/assets/hero_hoodie.png" 
+                alt="Sindhu Exports Showpiece" 
+                className="w-full h-full object-contain drop-shadow-[0_20px_50px_rgba(212,175,55,0.2)]"
+              />
             </div>
           </div>
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30">
-            <span className="text-[10px] font-black tracking-[1em] uppercase">Scroll to reveal</span>
-            <div className="w-px h-12 bg-gradient-to-b from-primary via-secondary-blue to-transparent" />
-          </div>
-        </motion.section>
-      </div>
+        </div>
 
-      {/* ─── SCROLLING MARQUEE ─── */}
-      <div className="bg-surface border-y border-white/5 py-8 overflow-hidden relative group z-20">
-        <div className="animate-marquee flex whitespace-nowrap group-hover:[animation-play-state:paused]">
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 z-20">
+          <span className="text-[10px] font-black tracking-[1em] uppercase">Scroll to reveal</span>
+          <div className="w-px h-12 bg-gradient-to-b from-primary via-secondary-blue to-transparent" />
+        </div>
+      </section>
+
+      {/* ─── SCROLLING MARQUEE (Now at top level for max visibility) ─── */}
+      <div className="relative z-30 bg-black/90 backdrop-blur-xl border-y border-white/5 py-8 overflow-hidden">
+        <div className="animate-marquee flex whitespace-nowrap">
           {[1, 2, 3].map((set) => (
             <div key={set} className="flex gap-12 items-center px-6">
               <span className="text-primary font-black text-2xl md:text-3xl uppercase tracking-tighter italic">· SINCE 2007</span>
@@ -123,6 +120,31 @@ export default function LandingPage() {
       </div>
 
       <div className="relative z-20 bg-background pt-24 shadow-[0_-50px_100px_rgba(0,0,0,1)]">
+        
+        {/* ─── SECTION: THE INDUSTRIAL ATELIER (NEW) ─── */}
+        <section className="px-6 md:px-12 py-32 border-b border-white/5">
+           <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+              <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 1 }}>
+                 <p className="text-secondary-blue text-[10px] font-black tracking-[0.8em] uppercase mb-12">OUR LEGACY</p>
+                 <h2 className="text-5xl md:text-7xl font-headline font-black uppercase tracking-tighter mb-12 leading-[0.85]">
+                    THE INDUSTRIAL ATELIER OF <br/> <span className="text-primary italic">TAMIL NADU.</span>
+                 </h2>
+                 <p className="text-white/60 font-medium text-lg leading-relaxed mb-12 max-w-xl">
+                    Since 2007, Sindhu Exports has been at the forefront of textile excellence. We don't just manufacture; we engineer garments that define the bond of the Industrial Hub. We control every thread from spinning to final stitch, ensuring that "Made in India" stands for uncompromising luxury.
+                 </p>
+                 <Link href="/about" className="group flex items-center gap-6">
+                    <div className="w-16 h-px bg-primary group-hover:w-24 transition-all" />
+                    <span className="text-primary font-black uppercase tracking-widest text-xs">Read Full Story</span>
+                 </Link>
+              </motion.div>
+              <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="relative aspect-square rounded-[4rem] overflow-hidden border border-white/5">
+                 <img src="/assets/industrial_atelier.png" alt="Industrial Atelier" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" />
+                 <div className="absolute inset-0 bg-gradient-to-tr from-black/60 to-transparent" />
+              </motion.div>
+           </div>
+        </section>
+
+
         
         {/* ─── SECTION 2: BENTO CATEGORY GRID ─── */}
         <section className="px-6 md:px-12 py-24">

@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
         <div className="flex flex-col gap-4 col-span-1 md:col-span-1">
           <Link href="/" className="text-white font-headline font-black text-lg md:text-xl relative group w-max">
-            Sindhu Exports
+            Sindhu Export
             <span className="absolute inset-0 bg-white/50 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-[5000ms] animate-pulse pointer-events-none" />
           </Link>
           <p className="text-on-surface-variant font-body normal-case tracking-normal text-sm leading-relaxed">
@@ -17,7 +17,7 @@ export default function Footer() {
             <br />Since 2007.
           </p>
           <div className="mt-4 text-on-surface-variant">
-            © 2024 Sindhu Exports.
+            © 2024 Sindhu Export.
           </div>
         </div>
 

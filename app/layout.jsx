@@ -1,7 +1,7 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Sindhu Exports | Industrial Opulence",
+  title: "Sindhu Export | Industrial Opulence",
   description: "Crafted In INDIA. Worn By The WORLD. Since 2007.",
 };
 

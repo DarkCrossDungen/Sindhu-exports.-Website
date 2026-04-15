@@ -39,7 +39,7 @@ export default function CartPage() {
             <h1 className="text-5xl md:text-7xl font-headline font-black uppercase tracking-tighter text-white">
               Shopping <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-white to-secondary-blue italic">Atelier</span>
             </h1>
-            <p className="text-xs text-on-surface-variant mt-4 font-black tracking-[0.4em] uppercase">Selection Managed by Sindhu Exports</p>
+            <p className="text-xs text-on-surface-variant mt-4 font-black tracking-[0.4em] uppercase">Selection Managed by Sindhu Export</p>
           </div>
           <div className="bg-surface border-2 border-primary/20 rounded-2xl px-8 py-4 flex items-center gap-4 shadow-xl shadow-primary/5">
              <span className="text-xs font-black uppercase tracking-widest text-on-surface-variant">Units</span>

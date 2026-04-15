@@ -18,12 +18,12 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-background/95 backdrop-blur-lg text-white font-headline font-bold tracking-tight fixed top-0 z-50 flex justify-between items-center w-full px-6 md:px-12 py-10 border-b border-outline/20">
+    <nav className="bg-background/95 backdrop-blur-lg text-white font-headline font-bold tracking-tight fixed top-0 z-50 flex justify-between items-center w-full px-6 md:px-12 py-5 border-b border-outline/20">
       <Link
         href="/"
         className="text-3xl md:text-4xl font-black text-white tracking-tighter uppercase relative group"
       >
-        Sindhu Exports
+        Sindhu Export
         <span className="absolute inset-0 animate-shimmer pointer-events-none rounded-full blur-xl opacity-0 group-hover:opacity-60 transition-opacity bg-primary/20" />
       </Link>
 

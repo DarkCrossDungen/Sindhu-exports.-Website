@@ -52,7 +52,7 @@ export default function AdminGuard({ children }) {
           <div className="relative z-10 text-center mb-12">
             <span className="material-symbols-outlined text-5xl text-primary mb-6">lock</span>
             <h2 className="text-3xl font-headline font-black uppercase text-white tracking-widest">Authorize Entry</h2>
-            <p className="text-[10px] font-black uppercase tracking-[0.4em] text-white/30 mt-2">Sindhu Exports Management</p>
+            <p className="text-[10px] font-black uppercase tracking-[0.4em] text-white/30 mt-2">Sindhu Export Management</p>
           </div>
 
           <form onSubmit={handleLogin} className="relative z-10 space-y-8">

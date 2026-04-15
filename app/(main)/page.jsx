@@ -112,7 +112,7 @@ export default function LandingPage() {
               <span className="text-primary font-black text-2xl md:text-3xl uppercase tracking-tighter italic">· SINCE 2007</span>
               <span className="text-secondary-blue font-black text-2xl md:text-3xl uppercase tracking-tighter">· 50+ SHIPMENTS DONE</span>
               <span className="text-white font-black text-2xl md:text-3xl uppercase tracking-tighter italic">· WORLDWIDE EXPORTS</span>
-              <span className="text-primary font-black text-2xl md:text-3xl uppercase tracking-tighter">· SINDHU EXPORTS</span>
+              <span className="text-primary font-black text-2xl md:text-3xl uppercase tracking-tighter">· SINDHU EXPORT</span>
               <span className="text-secondary-blue font-black text-2xl md:text-3xl uppercase tracking-tighter italic">· MADE IN INDIA</span>
             </div>
           ))}
@@ -130,7 +130,7 @@ export default function LandingPage() {
                     THE INDUSTRIAL ATELIER OF <br/> <span className="text-primary italic">TAMIL NADU.</span>
                  </h2>
                  <p className="text-white/60 font-medium text-lg leading-relaxed mb-12 max-w-xl">
-                    Since 2007, Sindhu Exports has been at the forefront of textile excellence. We don't just manufacture; we engineer garments that define the bond of the Industrial Hub. We control every thread from spinning to final stitch, ensuring that "Made in India" stands for uncompromising luxury.
+                    Since 2007, Sindhu Export has been at the forefront of textile excellence. We don't just manufacture; we engineer garments that define the bond of the Industrial Hub. We control every thread from spinning to final stitch, ensuring that "Made in India" stands for uncompromising luxury.
                  </p>
                  <Link href="/about" className="group flex items-center gap-6">
                     <div className="w-16 h-px bg-primary group-hover:w-24 transition-all" />
@@ -338,7 +338,7 @@ export default function LandingPage() {
                  </div>
               </div>
               <div className="flex flex-col md:flex-row justify-between items-center border-t border-white/5 pt-12 gap-8">
-                 <div className="text-4xl font-headline font-black uppercase text-white tracking-widest">SINDHU <span className="text-primary italic">EXPORTS</span></div>
+                 <div className="text-4xl font-headline font-black uppercase text-white tracking-widest">SINDHU <span className="text-primary italic">EXPORT</span></div>
                  <p className="text-[10px] font-mono text-white/20 uppercase tracking-[0.5em]">© 2024 - ARCHITECTS OF INDUSTRIAL COUTURE</p>
               </div>
            </div>

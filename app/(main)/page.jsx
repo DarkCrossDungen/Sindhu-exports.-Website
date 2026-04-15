@@ -68,27 +68,19 @@ export default function LandingPage() {
     <div className="bg-background min-h-screen text-white">
 
       {/* ─── SECTION 1: HERO ─── */}
-      <section className="relative h-screen w-full flex items-center overflow-hidden bg-black z-10 -mt-24">
+      <section className="relative min-h-[110vh] w-full flex items-center overflow-hidden bg-black z-10 -mt-24 pb-24">
         <div className="absolute top-0 left-0 w-[1000px] h-[1000px] bg-primary/5 rounded-full blur-[150px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-[1000px] h-[1000px] bg-secondary-blue/10 rounded-full blur-[150px] translate-x-1/2 translate-y-1/4 pointer-events-none" />
 
         <div className="container mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 relative z-20 w-full pt-24">
           <motion.div variants={fadeIn} initial="hidden" animate="visible" className="flex flex-col justify-center">
-            <motion.h1 variants={itemAnim} className="text-5xl md:text-6xl lg:text-[7rem] font-headline font-black leading-[0.8] uppercase tracking-tighter mb-8 bg-clip-text text-transparent bg-gradient-to-br from-white via-white/80 to-secondary-blue">
+            <motion.h1 variants={itemAnim} className="text-5xl md:text-6xl lg:text-[7rem] font-headline font-black leading-[0.8] uppercase tracking-tighter bg-clip-text text-transparent bg-gradient-to-br from-white via-white/80 to-secondary-blue">
               Crafted In <span className="text-secondary-blue">INDIA</span>.<br />
               Worn By The <span className="text-primary">WORLD</span>.
             </motion.h1>
-            <div className="flex flex-col sm:flex-row gap-6">
-              <Link href="/shop" className="bg-gradient-to-r from-primary to-secondary-blue text-white font-black uppercase tracking-widest px-12 py-5 rounded-2xl hover:scale-105 transition-all text-sm md:text-base text-center shadow-xl">
-                Shop Catalog
-              </Link>
-              <a href="#wholesale" className="bg-white/5 border border-white/10 text-white font-black uppercase tracking-widest px-12 py-5 rounded-2xl hover:bg-white/10 transition-all text-sm md:text-base text-center">
-                Bulk Orders
-              </a>
-            </div>
           </motion.div>
           <div className="hidden lg:flex items-center justify-center relative">
-            <div className="w-[80%] h-[600px] relative">
+            <div className="w-[80%] h-[800px] relative">
               <img 
                 src="/assets/hero_hoodie.png" 
                 alt="Sindhu Exports Showpiece" 
@@ -119,7 +111,7 @@ export default function LandingPage() {
         </div>
       </div>
 
-      <div className="relative z-20 bg-background pt-24 shadow-[0_-50px_100px_rgba(0,0,0,1)]">
+      <div className="relative z-20 bg-background pt-12 shadow-[0_-50px_100px_rgba(0,0,0,1)]">
         
         {/* ─── SECTION: THE INDUSTRIAL ATELIER (NEW) ─── */}
         <section className="px-6 md:px-12 py-32 border-b border-white/5">

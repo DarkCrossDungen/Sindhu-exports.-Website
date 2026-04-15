@@ -80,7 +80,7 @@ export default function LandingPage() {
             </motion.h1>
           </motion.div>
           <div className="hidden lg:flex items-center justify-center relative">
-            <div className="w-[80%] h-[800px] relative [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)]">
+            <div className="w-full h-[1000px] relative [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)] hover:scale-105 transition-transform duration-1000">
               <img 
                 src="/assets/hero_hoodie.png" 
                 alt="Sindhu Exports Showpiece" 
